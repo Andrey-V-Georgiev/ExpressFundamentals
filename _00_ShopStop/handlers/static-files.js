@@ -1,6 +1,6 @@
-const fs = require('fs')
-const path = require('path')
 const url = require('url')
+const path = require('path')
+const fs = require('fs')
 
 function getContentType (urlpathname) {
   let contentTypes = {
@@ -11,18 +11,23 @@ function getContentType (urlpathname) {
     '.ico': 'image/x-icon'
   }
 
+  let type = '';
   for (let type in contentTypes) {
     if (urlpathname.endsWith(type)) {
-      return contentTypes[type]
+      type = contentTypes[type]
     }
   }
+  console.log(type)
+  return type
 }
 
 module.exports = (req, res) => {
   req.pathname = req.pathname || url.parse(req.url).pathname
 
   if (req.pathname.startsWith('/content/') && req.method === 'GET') {
+
     let filePath = path.normalize(path.join(__dirname, `..${req.pathname}`))
+
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, {

@@ -45,7 +45,7 @@ module.exports = (req, res) => {
       res.write(html)
       res.end()
     })
-  } else {
+  }  else {
     return true
   }
 }
