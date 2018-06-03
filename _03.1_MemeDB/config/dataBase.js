@@ -10,7 +10,6 @@ let load = () => {
         console.log(err)
         return
       }
-      console.log('loading')
       db = JSON.parse(data)
       resolve(db)
     })

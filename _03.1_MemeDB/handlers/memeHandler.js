@@ -1,7 +1,7 @@
 const renderDetailsView = require('../services/renderDetailsView')
 const viewAll = require('../services/viewAll')
 const addMeme = require('../services/addMeme')
-const viewAddMeme = require('../services/viewAddMeme')
+const viewAddMeme = require('../services/renderAddMemeView')
 
 let memeHandler = (req, res) => {
   if (req.pathname === '/viewAllMemes' && req.method === 'GET') {

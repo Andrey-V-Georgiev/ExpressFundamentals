@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-let viewAddMeme = (req, res) => {
+let renderAddMemeView = (req, res) => {
   fs.readFile('./views/addMeme.html', 'utf8', (err, data) => {
     if (err) {
       res.showError()
@@ -12,4 +12,4 @@ let viewAddMeme = (req, res) => {
   })
 }
 
-module.exports = viewAddMeme
+module.exports = renderAddMemeView
