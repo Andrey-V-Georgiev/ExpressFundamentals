@@ -1,0 +1,14 @@
+<section>
+    <h2>All articles</h2>
+    <div class="spacer">
+        <ul>
+
+            {{#each allArticles}}
+                <li>
+                    <a href="/article/{{_id}}">{{title}}</a>
+                </li>
+            {{/each}}
+
+        </ul>
+    </div>
+</section>
