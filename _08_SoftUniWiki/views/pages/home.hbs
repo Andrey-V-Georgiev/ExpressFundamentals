@@ -1,0 +1,42 @@
+<section id="featured">
+    <h2>Latest article</h2>
+    <article>
+        <h3>{{lastArticle.title}}</h3>
+        <p id="content" style="display: block">
+            {{halfContent}}
+        </p>
+        <p id="fullContent" style="display: none">
+            {{fullContent}}
+        </p>
+        <div class="controls">
+            <input type="button" id="showBtn" onclick="myFunction()" value="Show more"></input>
+            <script>
+                function myFunction () {
+                    let content = document.getElementById('content')
+                    let fullContent = document.getElementById('fullContent')
+
+                    if (content.style.display === 'none') {
+                        document.getElementById('showBtn').value = 'Show more'
+                        content.style.display = 'block'
+                        fullContent.style.display = 'none'
+                    } else {
+                        document.getElementById('showBtn').value = 'Show less'
+                        content.style.display = 'none'
+                        fullContent.style.display = 'block'
+                    }
+                }
+            </script>
+        </div>
+    </article>
+</section>
+
+<section id="recent">
+    <h2>Recently added articles</h2>
+    <ul>
+        {{#each recentArticles}}
+            <li>
+                <a href="/article/{{_id}}">{{title}}</a>
+            </li>
+        {{/each}}
+    </ul>
+</section>

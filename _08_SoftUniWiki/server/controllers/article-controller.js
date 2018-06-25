@@ -1,16 +1,15 @@
-const authCheck = require('../authStatus')
-const Article = require('../../database/models/Article')
+const Article = require('../data/Article')
 
-module.exports = (app) => {
-  //todo auth
-  app.get('/article/:id', (req, res) => {
+module.exports = {
+
+  getArticle: (req, res) => {
 
     const articleId = req.params.id
     Article.findById(articleId)
       .populate({path: 'edits', model: 'Edit'})
       .then(article => {
-        let lastEdit = article.edits.sort(function(a,b){
-          if (a.creation < b.creation) {
+        let lastEdit = article.edits.sort(function (a, b) {
+          if (a.creation > b.creation) {
             return -1
           } else {
             return 1
@@ -19,5 +18,6 @@ module.exports = (app) => {
 
         res.render('pages/article', {lastEdit, article})
       })
-  })
+  }
 }
+

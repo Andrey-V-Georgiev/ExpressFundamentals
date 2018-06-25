@@ -17,13 +17,13 @@
 
         <nav>
             <a href="/home">Main Page</a>
-            <a href="/latestArticles">Latest Article</a>
+            <a href="/latestArticle">Latest Article</a>
             <a href="/allArticles">All Articles</a>
             <form action="/search" method="post">
                 <input type="text" name="search">
                 <input type="submit" value="Search">
             </form>
-            {{#if isAuthenticated}}
+            {{#if currentUser}}
                 <a href="/create">Create New Article</a>
             {{/if}}
         </nav>
@@ -32,9 +32,10 @@
     <div id="container">
 
         <header>
-            {{#if isAuthenticated}}
-                <span>Welcome, {{req.user.email}}!</span>
-                <a href="/logout">[Logout]</a>
+            {{#if currentUser}}
+                <span>Welcome, {{currentUser.username}}!</span>
+                <form id="logout-form" action="/logout" method="POST"></form>
+                <a href="javascript:document.getElementById('logout-form').submit()">[Logout]</a>
             {{else}}
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>

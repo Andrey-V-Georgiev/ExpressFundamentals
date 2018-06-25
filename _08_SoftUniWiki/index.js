@@ -1,21 +1,13 @@
-require('./database/config').then(() => {
+let env = process.env.NODE_ENV || 'development'
 
-  const app = require('./server/config')
+let settings = require('./server/config/settings')[env]
 
-  require('./server/controllers/homeController')(app)
-  require('./server/controllers/loginController')(app)
-  require('./server/controllers/registerController')(app)
-  require('./server/controllers/logoutController')(app)
-  require('./server/controllers/allArticlesController')(app)
-  require('./server/controllers/articleController')(app)
-  require('./server/controllers/createController')(app)
-  require('./server/controllers/editController')(app)
-  require('./server/controllers/historyController')(app)
-  require('./server/controllers/searchController')(app)
+const app = require('express')()
 
-})
+require('./server/config/database')(settings)
+require('./server/config/express')(app)
+require('./server/config/routes')(app)
+require('./server/config/passport')()
 
-
-
-
-
+app.listen(settings.port)
+console.log(`Server listening on port ${settings.port}...`)

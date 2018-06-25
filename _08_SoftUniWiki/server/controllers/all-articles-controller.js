@@ -1,9 +1,8 @@
-const authCheck = require('../authStatus')
-const Article = require('../../database/models/Article')
+const Article = require('../data/Article')
 
-module.exports = (app) => {
+module.exports = {
 
-  app.get('/allArticles', (req, res) => {
+  getAllArticles: (req, res) => {
 
     Article.find().then(allArticles => {
       allArticles = allArticles.sort(function(a,b){
@@ -15,5 +14,5 @@ module.exports = (app) => {
       })
       res.render('pages/all-articles', {allArticles})
     })
-  })
+  }
 }

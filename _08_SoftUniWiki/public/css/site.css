@@ -171,3 +171,8 @@ footer {
     background-color: #5d89a1;
     color: white;
 }
+
+img {
+    max-height: 300px;
+    max-width: 800px;
+}
