@@ -6,6 +6,10 @@ module.exports = {
       res.redirect('/login')
     }
   },
+  isAdmin: (req) => {
+    return req.isAuthenticated() && req.user.roles.indexOf('Admin') > -1
+  },
+
   isInRole: (role) => {
     return (req, res, next) => {
       if (req.isAuthenticated() && req.user.roles.indexOf(role) > -1) {

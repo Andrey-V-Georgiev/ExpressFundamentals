@@ -1,8 +1,10 @@
 <section>
     <h2>Edit article
         <div class="controls">
-            <a href="#">Lock article</a>
-            <a href="#">Unlock article</a>
+            {{#if isAdmin}}
+                <a href="/lockArticle/{{articleId}}">Lock article</a>
+                <a href="/unlockArticle/{{articleId}}">Unlock article</a>
+            {{/if}}
         </div>
     </h2>
     <div class="spacer">

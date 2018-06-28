@@ -1,5 +1,6 @@
 const Article = require('../data/Article')
 const Edit = require('../data/Edit')
+const auth = require('../config/auth')
 
 module.exports = {
   getLatestArticle: async (req, res) => {
@@ -10,6 +11,12 @@ module.exports = {
     const lastEditId = article.edits.pop()
     let lastEdit = await Edit.findById(lastEditId)
 
-    res.render('pages/article', {article, lastEdit, lastEditId})
+    const isAdmin = auth.isAdmin(req)
+
+    if (article.lockedStatus) {
+      res.render('pages/article', {lastEdit, article, unlocked: isAdmin})
+    } else {
+      res.render('pages/article', {lastEdit, article,  unlocked: true})
+    }
   }
 }

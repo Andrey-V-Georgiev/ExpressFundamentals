@@ -2,16 +2,20 @@
     <h2>{{article.title}}
         <div class="controls">
             {{#if currentUser}}
-            <a href="/edit/{{article._id}}">[edit]</a>
-            <a href="/history/{{article._id}}">[history]</a>
+               {{#if unlocked}}
+                <a href="/edit/{{article._id}}">[edit]</a>
+               {{/if}}
+            {{/if}}
+            {{#if currentUser}}
+                <a href="/history/{{article._id}}">[history]</a>
             {{/if}}
         </div>
     </h2>
     <article>
-            <img src="{{lastEdit.imageUrl}}" >
-            <p>
-                {{lastEdit.content}}
-            </p>
+        <img src="{{lastEdit.imageUrl}}">
+        <p>
+            {{lastEdit.content}}
+        </p>
 
     </article>
 </div>

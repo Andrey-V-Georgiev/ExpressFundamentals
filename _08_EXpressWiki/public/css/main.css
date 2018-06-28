@@ -1,0 +1,32 @@
+.logo {
+    width: 300px;
+    border-radius: 5px;
+}
+
+.nav_section a{
+    margin: 5px;
+}
+
+.jumbotron {
+    text-align: center;
+    height: 150px;
+}
+
+.right_section {
+    margin: 0 100px 0 300px;
+}
+
+.form-group {
+    width: 800px;
+}
+
+
+.card-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+}

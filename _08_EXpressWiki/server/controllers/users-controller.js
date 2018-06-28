@@ -70,6 +70,6 @@ module.exports = {
   },
   postLogout: (req, res) => {
     req.logout()
-    res.redirect('/home')
+    res.redirect('/login')
   }
 }

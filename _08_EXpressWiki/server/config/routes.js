@@ -28,6 +28,11 @@ module.exports = (app) => {
 
   app.get('/history/:id', controllers.history.getHistory)
 
+  app.get('/lockArticle/:id', controllers.article.lockArticle)
+  app.get('/unlockArticle/:id', controllers.article.unlockArticle)
+
+  app.post('/search', controllers.allArticles.searchArticles)
+
 /////////////////////////////////////////////////////////////////////////////
   app.all('*', (req, res) => {
     res.status(404)

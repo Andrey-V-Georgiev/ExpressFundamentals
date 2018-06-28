@@ -1,5 +1,6 @@
 const Article = require('../data/Article')
 const Edit = require('../data/Edit')
+const auth = require('../config/auth')
 
 module.exports = {
 
@@ -8,8 +9,9 @@ module.exports = {
 
     let article = await Article.findById(articleId).populate({path: 'edits', model: 'Edit'})
     let edit = article.edits[article.edits.length - 1]
+    const isAdmin = auth.isAdmin(req)
 
-    res.render('pages/edit', {article, edit, articleId})
+    res.render('pages/edit', {article, edit, articleId, isAdmin})
   },
 
   postEdit: (req, res) => {
@@ -30,6 +32,7 @@ module.exports = {
 
      Edit.create(newEditObject).then(newEdit => {
        Article.update({ _id: articleId }, {$push: {edits: newEdit}}).then(article => {
+
          res.redirect(`/article/${articleId}`)
        })
      })
