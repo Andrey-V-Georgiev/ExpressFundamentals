@@ -16,11 +16,4 @@ module.exports = {
     })
   },
 
-  searchArticles: (req, res) => {
-    let search = req.body.search
-    Article.find().then(allArticles => {
-      allArticles = allArticles.filter(a => a.title.startsWith(search))
-      res.render('pages/all-articles', {allArticles})
-    })
-  }
 }

@@ -1,6 +1,27 @@
+
 .logo {
     width: 300px;
     border-radius: 5px;
+}
+
+#login-container {
+    margin:auto;
+    padding-left: 120px;
+}
+
+#register-container {
+    margin:auto;
+    padding-left: 120px;
+}
+
+#create-container {
+    margin:auto;
+    padding-left: 120px;
+}
+
+
+.form-group {
+ float: left;
 }
 
 .nav_section a{
@@ -21,12 +42,7 @@
 }
 
 
-.card-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
+.btn {
+    margin: 2px;
 }
+

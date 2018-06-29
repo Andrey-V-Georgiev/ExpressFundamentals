@@ -6,6 +6,7 @@ const article = require('./article-controller')
 const latestArticle = require('./latest-article')
 const edit = require('./edit-controller')
 const history = require('./history-controller')
+const search = require('./search-controller')
 
 module.exports = {
   users: users,
@@ -15,5 +16,6 @@ module.exports = {
   article: article,
   latestArticle: latestArticle,
   edit: edit,
-  history: history
+  history: history,
+  search: search
 }

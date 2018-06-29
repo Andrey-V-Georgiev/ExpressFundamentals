@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Wiki</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -12,13 +21,14 @@
 <body>
 <header>
     <nav class="navbar navbar-dark bg-dark">
-        <a href="https://expressjs.com/en/starter/installing.html">
+        <a href="https://expressjs.com/en/4x/api.html">
             <img class="logo" src="/img/expressLogo.png" alt="logo"/>
         </a>
 
         {{#if currentUser}}
-            <span>Welcome, {{currentUser.username}}!</span>
+
             <form id="logout-form" action="/logout" method="POST">
+                <span class="text-white">Welcome, {{currentUser.username}}!</span>
                 <button type="submit" class="btn btn-primary">Logout</button>
             </form>
         {{else}}
@@ -49,30 +59,20 @@
 
         <section id="search">
             <form class="form-inline my-2 my-lg-0" action="/search" method="post">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </section>
     </nav>
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Welcome to ExpressWiki!</h1>
-        </div>
-    </div>
+
 </header>
 
 <main>
 
+    {{{body}}}
 
-    <section class="right_section">
-        {{{body}}}
-    </section>
 </main>
-
-<div class="card-footer text-muted">
-    SoftUni Wiki &copy; 2018
-</div>
 
 </body>
 

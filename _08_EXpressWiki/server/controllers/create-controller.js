@@ -16,12 +16,15 @@ module.exports = {
 
     Article.create({title: title, edits: []}, (err, article) => {
       if (err) return console.log(err.message)
+
       Edit.create({author: author, imageUrl: imageUrl, content: content, articleId: article._id}, (err, edit) => {
         if (err) return console.log(err.message)
+
         Article.update({_id: article._id}, {'$push': {edits: edit._id}}, (err, data) => {
           if (err) return console.log(err.message)
         })
       })
+
       res.redirect(`/article/${article._id}`)
     })
   }

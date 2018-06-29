@@ -1,9 +1,14 @@
-const authCheck = require('../authStatus')
+const Article = require('../data/Article')
 
-module.exports = (app) => {
-  //todo auth
-  app.get('/search',  (req, res) => {
+module.exports = {
 
-    res.render('pages/search-results', req)
-  })
+  searchArticles: (req, res) => {
+    let search = req.body.search
+
+    Article.find().then(allArticles => {
+      allArticles = allArticles.filter(a =>  a.title.startsWith(search))
+      console.log(allArticles)
+      res.render('pages/all-articles', {allArticles})
+    })
+  }
 }

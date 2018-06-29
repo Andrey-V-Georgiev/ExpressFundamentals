@@ -1,42 +1,95 @@
-<section id="featured">
-    <h2>Latest article</h2>
-    <article>
-        <h3>{{lastArticle.title}}</h3>
-        <p id="content" style="display: block">
-            {{halfContent}}
-        </p>
-        <p id="fullContent" style="display: none">
-            {{fullContent}}
-        </p>
-        <div class="controls">
-            <input type="button" id="showBtn" onclick="myFunction()" value="Show more"></input>
-            <script>
-                function myFunction () {
-                    let content = document.getElementById('content')
-                    let fullContent = document.getElementById('fullContent')
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Welcome to ExpressWiki!</h1>
+    </div>
+</div>
 
-                    if (content.style.display === 'none') {
-                        document.getElementById('showBtn').value = 'Show more'
-                        content.style.display = 'block'
-                        fullContent.style.display = 'none'
-                    } else {
-                        document.getElementById('showBtn').value = 'Show less'
-                        content.style.display = 'none'
-                        fullContent.style.display = 'block'
-                    }
-                }
-            </script>
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+
+            <div class="card" style="width: 28rem;">
+                <img class="card-img-top" src="{{firstEdit}}" alt="Card image cap">
+                <div class="card-body">
+                    <h3>Latest article</h3>
+                    <h5 class="card-title">{{lastArticle.title}}</h5>
+                    <p class="card-text" id="content" style="display: block">
+                        {{halfContent}}
+                    </p>
+                    <p class="card-text" id="fullContent" style="display: none">
+                        {{fullContent}}
+                    </p>
+                    <input class="btn btn-primary" type="button" id="showBtn" onclick="myFunction()" value="Show more"/>
+                    <script>
+                        function myFunction () {
+                            let content = document.getElementById('content')
+                            let fullContent = document.getElementById('fullContent')
+
+                            if (content.style.display === 'none') {
+                                document.getElementById('showBtn').value = 'Show more'
+                                content.style.display = 'block'
+                                fullContent.style.display = 'none'
+                            } else {
+                                document.getElementById('showBtn').value = 'Show less'
+                                content.style.display = 'none'
+                                fullContent.style.display = 'block'
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+
         </div>
-    </article>
-</section>
 
-<section id="recent">
-    <h2>Recently added articles</h2>
-    <ul>
-        {{#each recentArticles}}
-            <li>
-                <a href="/article/{{_id}}">{{title}}</a>
-            </li>
-        {{/each}}
-    </ul>
-</section>
+        <div class="col">
+            <h2>Recently added articles</h2>
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item ">
+                        <a href="/article/{{firstArticle._id}}">
+                            <img class="d-block w-100" src="{{firstEdit}}" alt="First slide">
+                            {{firstArticle.title}}
+                        </a>
+                    </div>
+
+                    <div class="carousel-item active">
+                        <a href="/article/{{thirdArticle._id}}">
+                            <img class="d-block w-100" src="{{thirdImage}}" alt="Third slide">
+                            {{thirdArticle.title}}
+                        </a>
+                    </div>
+
+                    <div class="carousel-item">
+                        <a href="/article/{{secondArticle._id}}">
+                            <img   class="d-block w-100" src="{{secondImage}}" alt="Second slide">
+                            {{secondArticle.title}}
+                        </a>
+                    </div>
+
+                </div>
+
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

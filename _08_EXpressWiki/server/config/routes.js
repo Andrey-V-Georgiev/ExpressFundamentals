@@ -31,7 +31,7 @@ module.exports = (app) => {
   app.get('/lockArticle/:id', controllers.article.lockArticle)
   app.get('/unlockArticle/:id', controllers.article.unlockArticle)
 
-  app.post('/search', controllers.allArticles.searchArticles)
+  app.post('/search', controllers.search.searchArticles)
 
 /////////////////////////////////////////////////////////////////////////////
   app.all('*', (req, res) => {
